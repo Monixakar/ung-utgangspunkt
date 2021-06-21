@@ -1,36 +1,7 @@
 @namespace
 class SpriteKind:
     Cash = SpriteKind.create()
-"""
-
-All info om AJ
-
-"""
-"""
-
-Her er oppstarten. AJ starter på Start flagget, og det er lagt inn hvordan AJ skal bevege seg.
-
-"""
-"""
-
-Hvordan AJ skal bevege seg ved hopp
-
-"""
-
-def on_up_pressed():
-    AJ.vy = -150
-controller.up.on_event(ControllerButtonEvent.PRESSED, on_up_pressed)
-
-def on_on_overlap(sprite, otherSprite):
-    otherSprite.destroy()
-    info.change_score_by(1)
-sprites.on_overlap(SpriteKind.player, SpriteKind.Cash, on_on_overlap)
-
-"""
-
-Info om tilemap og bakgrunner må inn her
-
-"""
+# Info om tilemap og bakgrunner må inn her
 def Next_level():
     global curren_level, Money, Enemy1
     for value in sprites.all_of_kind(SpriteKind.enemy):
@@ -93,6 +64,26 @@ def Next_level():
             SpriteKind.enemy)
         tiles.place_on_tile(Enemy1, value1)
         Enemy1.follow(AJ, 30)
+"""
+
+All info om AJ
+
+"""
+"""
+
+Her er oppstarten. AJ starter på Start flagget, og det er lagt inn hvordan AJ skal bevege seg.
+
+"""
+# Hvordan AJ skal bevege seg ved hopp
+
+def on_up_pressed():
+    AJ.vy = -150
+controller.up.on_event(ControllerButtonEvent.PRESSED, on_up_pressed)
+
+def on_on_overlap(sprite, otherSprite):
+    otherSprite.destroy()
+    info.change_score_by(1)
+sprites.on_overlap(SpriteKind.player, SpriteKind.Cash, on_on_overlap)
 
 def on_overlap_tile(sprite, location):
     Next_level()

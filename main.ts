@@ -1,25 +1,7 @@
 namespace SpriteKind {
     export const Cash = SpriteKind.create()
 }
-/**
- * All info om AJ
- */
-/**
- * Her er oppstarten. AJ starter på Start flagget, og det er lagt inn hvordan AJ skal bevege seg.
- */
-/**
- * Hvordan AJ skal bevege seg ved hopp
- */
-controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    AJ.vy = -150
-})
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Cash, function (sprite, otherSprite) {
-    otherSprite.destroy()
-    info.changeScoreBy(1)
-})
-/**
- * Info om tilemap og bakgrunner må inn her
- */
+// Info om tilemap og bakgrunner må inn her
 function Next_level () {
     for (let value of sprites.allOfKind(SpriteKind.Enemy)) {
         value.destroy()
@@ -76,6 +58,17 @@ function Next_level () {
         Enemy1.follow(AJ, 30)
     }
 }
+/**
+ * Her er oppstarten. AJ starter på Start flagget, og det er lagt inn hvordan AJ skal bevege seg.
+ */
+// Hvordan AJ skal bevege seg ved hopp
+controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+    AJ.vy = -150
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Cash, function (sprite, otherSprite) {
+    otherSprite.destroy()
+    info.changeScoreBy(1)
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
     Next_level()
 })
@@ -91,6 +84,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
         info.changeLifeBy(-1)
     }
 })
+/**
+ * All info om AJ
+ */
 let Enemy1: Sprite = null
 let Money: Sprite = null
 let curren_level = 0
